@@ -11,7 +11,8 @@ namespace KERMESSE_MYGRO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_rol
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,10 @@ namespace KERMESSE_MYGRO.Models
         }
     
         public int id_rol { get; set; }
+
+        [Display(Name = "Nombre del rol: ")]
+        [Required(ErrorMessage = "Asignele un nombre al rol")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
         public string rol { get; set; }
         public int estado { get; set; }
     
