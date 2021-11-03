@@ -132,6 +132,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Tbl_RolController.cs" />
+    <Compile Include="Controllers\Tbl_Rol_OpcionController.cs" />
+    <Compile Include="Controllers\Tbl_Rol_UsuarioController.cs" />
     <Compile Include="Controllers\Tbl_UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3646,6 +3648,10 @@
     <Content Include="Views\Tbl_Rol\Tbl_Rol.cshtml" />
     <Content Include="Views\Tbl_Rol\InsertRol.cshtml" />
     <Content Include="Views\Tbl_Rol\EditRol.cshtml" />
+    <Content Include="Views\Tbl_Rol_Usuario\VistaInsertRolUsuario.cshtml" />
+    <Content Include="Views\Tbl_Rol_Usuario\Tbl_Rol_Usuario.cshtml" />
+    <Content Include="Views\Tbl_Rol_Opcion\Tbl_Rol_Opcion.cshtml" />
+    <Content Include="Views\Tbl_Rol_Opcion\VistaInsertRolOpciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

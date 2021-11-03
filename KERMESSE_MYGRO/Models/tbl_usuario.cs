@@ -34,6 +34,7 @@ namespace KERMESSE_MYGRO.Models
         [Display(Name = "Contraseña: ")]
         [Required(ErrorMessage = "Ingrese su contraseña")]
         [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
+        [DataType(DataType.Password)]
         public string pwd { get; set; }
 
         [Display(Name = "Nombres: ")]

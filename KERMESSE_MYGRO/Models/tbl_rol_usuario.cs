@@ -11,11 +11,17 @@ namespace KERMESSE_MYGRO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_rol_usuario
     {
         public int id_rol_usuario { get; set; }
+        [Display(Name = "Usuario: ")]
+        [Required(ErrorMessage = "Asigne un usuario")]
         public int id_usuario { get; set; }
+
+        [Display(Name = "Rol: ")]
+        [Required(ErrorMessage = "Asigne un rol")]
         public int id_rol { get; set; }
     
         public virtual tbl_rol tbl_rol { get; set; }

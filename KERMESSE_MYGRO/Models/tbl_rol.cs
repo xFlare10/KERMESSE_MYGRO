@@ -26,7 +26,7 @@ namespace KERMESSE_MYGRO.Models
 
         [Display(Name = "Nombre del rol: ")]
         [Required(ErrorMessage = "Asignele un nombre al rol")]
-        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
+        [StringLength(100, ErrorMessage = "La cantidad de caracteres permitida es de 100")]
         public string rol { get; set; }
         public int estado { get; set; }
     
