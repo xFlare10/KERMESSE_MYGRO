@@ -243,26 +243,26 @@
     $("#saveTasa").click(function (e) {
         e.preventDefault();
 
-        var detailArr = [];
-        detailArr.length = 0;
+        var detail = [];
+        detail.length = 0;
 
         $.each($("#tablaprueba tbody tr"), function () {
 
-            detailArr.push({
-                fecha: $(this).find('td:eq(2)').html(),
-                tipo_cambio: $(this).find('td:eq(3)').html(),
+            detail.push({
+                fecha: $(this).find('td:eq(0)').html(),
+                tipo_cambio: $(this).find('td:eq(1)').html(),
             });
 
         });
 
-        console.log(detailArr);
+        console.log(detail);
 
         var data = JSON.stringify({
             monedaO: $("#monedaO").val(),
             monedaC: $("#monedaC").val(),
             mes: $("#mes").val(),
             anio: $("#anio").val(),
-            tcdet: detailArr
+            tcdet: detail
         });
 
         console.log(data);

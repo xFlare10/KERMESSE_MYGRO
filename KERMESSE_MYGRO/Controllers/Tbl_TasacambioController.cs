@@ -27,8 +27,8 @@ namespace KERMESSE_MYGRO.Controllers
      
         public ActionResult InsertTasaCambioA(int monedaO, int monedaC, int mes, int anio, tbl_tasacambio_det[] tcdet)
         {
-            ViewBag.id_monedaO = new SelectList(db.tbl_moneda, "id_moneda", "nombre");
-            ViewBag.id_monedaC = new SelectList(db.tbl_moneda, "id_moneda", "nombre");
+            ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
             string result = "Error! Order Is Not Complete!";
             tbl_tasacambio tc = new tbl_tasacambio();
 
@@ -37,6 +37,7 @@ namespace KERMESSE_MYGRO.Controllers
                 tc.mes = mes;
                 tc.anio = anio;
                 tc.estado = 1;
+                db.tbl_tasacambio.Add(tc);
 
                 foreach(var item in tcdet)
                 {
