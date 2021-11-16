@@ -68,6 +68,23 @@
                                 <i class="bi bi-bar-chart-steps fs-3"></i>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="@Url.Action("tbl_opciones", "Tbl_Opciones")" class="nav-link py-3 px-2 link-light" title="Opciones" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                <i class="bi bi-gear-fill fs-3"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("tbl_moneda", "Tbl_Moneda")" class="nav-link py-3 px-2 link-light" title="Moneda" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                <i class="fas fa-coins fs-3"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")" class="nav-link py-3 px-2 link-light" title="Tasa de cambio" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                <i class="fas fa-file-invoice-dollar fs-3"></i>
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -90,6 +107,7 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="~/Content/sidebar.js"></script>
 <script src="~/Content/DataTables/DataTables-1.10.21/js/jquery.dataTables.js"></script>
@@ -156,8 +174,8 @@
             buttons: [{
                 extend: 'pdf', text: '<i class="fas fa-file-pdf" style="margin-right:10px"></i>Descargar como PDF', titleAttr: 'PDF', className: 'btn btn2'
             },
-                { extend: 'excel', text: '<i class="fas fa-file-excel" style="margin-right:10px"></i>Descargar como Excel', titleAttr: 'Excel', className: 'btn btn2' },
-                { extend: 'print', text: '<i class="fas fa-print" style="margin-right:10px"></i>Imprimir tabla', titleAttr: 'Imprimir', className: 'btn btn2' }
+            { extend: 'excel', text: '<i class="fas fa-file-excel" style="margin-right:10px"></i>Descargar como Excel', titleAttr: 'Excel', className: 'btn btn2' },
+            { extend: 'print', text: '<i class="fas fa-print" style="margin-right:10px"></i>Imprimir tabla', titleAttr: 'Imprimir', className: 'btn btn2' }
             ],
 
             initComplete: function () {
@@ -167,8 +185,95 @@
             }
 
         });
+        eliminarFila();
     });
 
 </script>
+
+
+<script>
+    function agregarFila() {
+
+        //var mono = $('#monedaO option:selected').text();
+        //var monc = $('#monedaC option:selected').text();
+        //var mes = $('#mes').text();
+        //var anio = $('#anio').text();
+
+        var fecha = $('#fecha').val();
+        var tipo_cambio = $('#tasaC').val();
+
+        document.getElementById("tablaprueba").insertRow(-1).innerHTML =
+            '<td>' + fecha + '</td>' +
+            '<td>' + tipo_cambio + '</td>' +
+            '<td><button type="button" class="btn btn-sm btn-danger borrar"><i class="fas fa-trash-alt"></i></button></td>';
+        clearItem();
+
+    }
+
+    function eliminarFila() {
+        $(document).on('click', '.borrar', function (event) {
+            event.preventDefault();
+            $(this).closest('tr').remove();
+        });
+    }
+
+    //Limpiar
+    function clearItem() {
+        $("#fecha").val('');
+        $("#tasaC").val('');
+    }
+
+    function saveTasa(data) {
+        return $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: "/Tbl_Tasacambio/InsertTasaCambioA",
+            data: data,
+            success: function (result) {
+                alert(result);
+                location.reload();
+            },
+            error: function () {
+                alert("Error!")
+            }
+        });
+    }
+
+    $("#saveTasa").click(function (e) {
+        e.preventDefault();
+
+        var detailArr = [];
+        detailArr.length = 0;
+
+        $.each($("#tablaprueba tbody tr"), function () {
+
+            detailArr.push({
+                fecha: $(this).find('td:eq(2)').html(),
+                tipo_cambio: $(this).find('td:eq(3)').html(),
+            });
+
+        });
+
+        console.log(detailArr);
+
+        var data = JSON.stringify({
+            monedaO: $("#monedaO").val(),
+            monedaC: $("#monedaC").val(),
+            mes: $("#mes").val(),
+            anio: $("#anio").val(),
+            tcdet: detailArr
+        });
+
+        console.log(data);
+
+        $.when(saveTasa(data)).then(function (response) {
+            console.log(response);
+        }).fail(function (err) {
+            console.log(err);
+        });
+    });
+</script>
+
 
 </html>

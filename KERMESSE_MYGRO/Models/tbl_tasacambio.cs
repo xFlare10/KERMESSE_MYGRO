@@ -11,7 +11,8 @@ namespace KERMESSE_MYGRO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_tasacambio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace KERMESSE_MYGRO.Models
         }
     
         public int id_tasacambio { get; set; }
+        
+        [Display(Name = "Moneda de origen: ")]
+        [Required(ErrorMessage = "Asigne una moneda")]
         public int id_monedaO { get; set; }
+
+        [Display(Name = "Moneda de cambio: ")]
+        [Required(ErrorMessage = "Asigne una moneda")]
         public int id_monedaC { get; set; }
         public int mes { get; set; }
         public int anio { get; set; }

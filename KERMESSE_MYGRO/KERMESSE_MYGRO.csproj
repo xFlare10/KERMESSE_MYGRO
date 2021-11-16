@@ -131,9 +131,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Tbl_MonedaController.cs" />
+    <Compile Include="Controllers\Tbl_OpcionesController.cs" />
     <Compile Include="Controllers\Tbl_RolController.cs" />
     <Compile Include="Controllers\Tbl_Rol_OpcionController.cs" />
     <Compile Include="Controllers\Tbl_Rol_UsuarioController.cs" />
+    <Compile Include="Controllers\Tbl_TasacambioController.cs" />
     <Compile Include="Controllers\Tbl_UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3652,6 +3655,11 @@
     <Content Include="Views\Tbl_Rol_Usuario\Tbl_Rol_Usuario.cshtml" />
     <Content Include="Views\Tbl_Rol_Opcion\Tbl_Rol_Opcion.cshtml" />
     <Content Include="Views\Tbl_Rol_Opcion\VistaInsertRolOpciones.cshtml" />
+    <Content Include="Views\Tbl_Opciones\Tbl_Opciones.cshtml" />
+    <Content Include="Views\Tbl_Moneda\InsertMoneda.cshtml" />
+    <Content Include="Views\Tbl_Moneda\Tbl_Moneda.cshtml" />
+    <Content Include="Views\Tbl_Tasacambio\Tbl_Tasacambio.cshtml" />
+    <Content Include="Views\Tbl_Tasacambio\InsertTasaCambio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

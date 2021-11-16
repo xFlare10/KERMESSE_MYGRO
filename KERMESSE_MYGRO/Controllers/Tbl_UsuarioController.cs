@@ -58,6 +58,16 @@ namespace KERMESSE_MYGRO.Controllers
             return View("Tbl_Usuario", list);
         }
 
+        public ActionResult DeleteUsuario2(tbl_usuario tbu)
+        {
+            var user = from u in db.tbl_usuario select u;
+
+            user = user.Where(u => u.estado.Equals(2) || u.estado.Equals(1));
+
+            return View(user.ToList());
+
+        }
+
         public ActionResult VerUsuario(int id)
         {
             var user = db.tbl_usuario.Where(x => x.id_usuario == id).First();

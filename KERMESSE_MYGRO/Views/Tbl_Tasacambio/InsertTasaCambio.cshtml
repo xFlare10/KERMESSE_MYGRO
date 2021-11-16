@@ -1,0 +1,169 @@
+﻿@model Tuple<KERMESSE_MYGRO.Models.tbl_tasacambio, KERMESSE_MYGRO.Models.tbl_tasacambio_det>
+
+@{
+    ViewBag.Title = "InsertTasaCambio";
+}
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">Gestión de Tasa de cambio</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+        <li class="breadcrumb-item "><a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")">Gestión de tasa de cambio</a></li>
+        <li class="breadcrumb-item active">Registrar un Período</li>
+    </ol>
+    <div class="card mb-4">
+        <img src="https://miviajeanewyork.files.wordpress.com/2016/02/monedas-banner.jpg?w=1390" class="card-img-top" alt="moneda">
+
+        <div class="card-body">
+
+            <div class="table">
+
+                <h2>Registrando un nuevo período</h2>
+
+                <div style="text-align: right;">
+                    <a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")" title="Regresar a la página anterior">
+                        <i class="fas fa-arrow-circle-left"></i>
+                        Regresar a la página anterior
+                    </a><br><br>
+                </div>
+
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-12">
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <label class="small mb-1">Moneda de Origen: </label>
+                                    @Html.DropDownListFor(model => model.Item1.id_monedaO, ViewBag.id_monedaO as SelectList, "Seleccione...", htmlAttributes: new { @class = "form-control", @name = "monedaO", @id = "monedaO" })
+                                    @Html.ValidationMessageFor(model => model.Item1.id_monedaO, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col">
+                                    <label class="small mb-1">Moneda de Cambio: </label>
+                                    @Html.DropDownListFor(model => model.Item1.id_monedaC, ViewBag.id_monedaC as SelectList, "Seleccione...", htmlAttributes: new { @class = "form-control", @name = "monedaC", @id = "monedaC" })
+                                    @Html.ValidationMessageFor(model => model.Item1.id_monedaC, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <label class="small mb-1">Mes: </label>
+                                    <select class="form-control" name="mes" id="mes" required>
+                                        <option value="">Seleccione...</option>
+                                        <option value="1">Enero</option>
+                                        <option value="2">Febrero</option>
+                                        <option value="3">Marzo</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Mayo</option>
+                                        <option value="6">Junio</option>
+                                        <option value="7">Julio</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                    </select>
+                                </div>
+
+                                
+                                <div class="col">
+                                    <label class="small mb-1">Año: </label>
+                                    <input class="form-control" name="anio" id="anio"
+                                           type="number" placeholder="Año" title="Ingrese el año" value="@DateTime.Now.Year" step="1" required />
+                                    <input type="hidden" id="txtaccion" name="txtaccion" value="1" />
+                                </div>
+
+                            </div>
+
+                            <br>
+
+                            <div class="card mb-4">
+
+                                <div class="card-body">
+
+                                    <h4>Detalle de tasas de cambio del periodo</h4>
+
+                                    <br>
+
+                                    <div class="row">
+
+                                        <div class="col">
+                                            <label class="small mb-1">Fecha de Tasa: </label>
+                                            @*<input class="form-control" name="fecha" id="fecha"
+                                                type="date" placeholder="Ejemplo: dd/MM/yyyy" title="Ingrese una fecha válida!" required />*@
+                                            @Html.EditorFor(model => model.Item2.fecha, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "fecha", @name = "fecha" } })
+                                            @Html.ValidationMessageFor(model => model.Item2.fecha, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="col">
+                                            <label class="small mb-1">Tasa de Cambio: </label>
+                                            <div class="input-group mb-3">
+                                                <input class="form-control" name="tasaC" id="tasaC" type="number" step='0.01'
+                                                       value='0.00' placeholder="0.00" title="Ingrese la tasa de cambio" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="small mb-1"></label>
+                                            <button type="button" onclick="agregarFila()" class="btn btn-outline-primary btn-block">
+                                                <i class="fas fa-plus"></i> Agregar
+                                            </button>
+
+                                        </div>
+
+                                    </div><br>
+
+                                    <div class="table-responsive">
+
+                                        <table class="table table-bordered table-hover" name="tablaprueba" id="tablaprueba" width="50%" style="text-align: center;" cellspacing="0">
+
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Tipo de cambio</th>
+                                                    <th width="15%">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr></tr>
+                                            </tbody>
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                <div class="form-row" style="text-align: center;">
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <button id="saveTasa" class="btn btn-primary btn-block" type="submit"> Registrar nuevo periodo </button>
+                                        </div>
+
+                                        <div class="col">
+                                            <input class="btn btn-outline-danger btn-block" type="reset" value="Cancelar" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
