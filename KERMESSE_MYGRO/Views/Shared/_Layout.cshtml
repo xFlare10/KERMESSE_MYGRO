@@ -248,10 +248,14 @@
 
         $.each($("#tablaprueba tbody tr"), function () {
 
-            detail.push({
-                fecha: $(this).find('td:eq(0)').html(),
-                tipo_cambio: $(this).find('td:eq(1)').html(),
-            });
+            if ($(this).find('td:eq(0)').html() === undefined) {
+                console.log("Este está nulo")
+            } else {
+                detail.push({
+                    fecha: $(this).find('td:eq(0)').html(),
+                    tipo_cambio: $(this).find('td:eq(1)').html(),
+                });
+            }
 
         });
 
