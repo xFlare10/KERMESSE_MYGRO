@@ -12,13 +12,9 @@ namespace KERMESSE_MYGRO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_rol_usuario
+    public partial class vw_rol_opciones
     {
-        public int id_rol_usuario { get; set; }
-        public int id_usuario { get; set; }
-        public int id_rol { get; set; }
-    
-        public virtual tbl_rol tbl_rol { get; set; }
-        public virtual tbl_usuario tbl_usuario { get; set; }
+        public string rol { get; set; }
+        public string opcion { get; set; }
     }
 }

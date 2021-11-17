@@ -29,7 +29,7 @@ namespace KERMESSE_MYGRO.Controllers
         {
             ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
             ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
-            string result = "Error! Order Is Not Complete!";
+            
             tbl_tasacambio tc = new tbl_tasacambio();
 
                 tc.id_monedaO = monedaO;
@@ -50,8 +50,8 @@ namespace KERMESSE_MYGRO.Controllers
                 }
                 db.SaveChanges();
 
-                result = "Success! Order Is Complete!";
-            return Json(result, JsonRequestBehavior.AllowGet);
+               
+            return RedirectToAction("Tbl_Tasacambio");
         }
 
         public ActionResult DeleteTasaCambio(int id)
@@ -82,8 +82,44 @@ namespace KERMESSE_MYGRO.Controllers
                 throw;
             }
         }
-            
+
+        public ActionResult EditTasaCambioM(int id)
+        {
+            tbl_tasacambio tbc = db.tbl_tasacambio.Find(id);
+
+            if (tbc == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(tbc);
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult UpdateTasaCambioM(tbl_tasacambio tbc)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    tbc.estado = 2;
+                    db.Entry(tbc).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+                return RedirectToAction("Tbl_Tasacambio");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
+
+}
 
 }
 

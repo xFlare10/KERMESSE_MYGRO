@@ -12,13 +12,12 @@ namespace KERMESSE_MYGRO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_rol_usuario
+    public partial class vw_tasacambio
     {
-        public int id_rol_usuario { get; set; }
-        public int id_usuario { get; set; }
-        public int id_rol { get; set; }
-    
-        public virtual tbl_rol tbl_rol { get; set; }
-        public virtual tbl_usuario tbl_usuario { get; set; }
+        public int id_tasaCambio { get; set; }
+        public string original { get; set; }
+        public string cambio { get; set; }
+        public int mes { get; set; }
+        public int anio { get; set; }
     }
 }

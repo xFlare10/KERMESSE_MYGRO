@@ -228,6 +228,48 @@
     <Compile Include="Models\tbl_usuario.cs">
       <DependentUpon>KermesseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vw_arqueocaja.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_arqueocajadet.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_denominacion.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_gastos.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_ingresocomdet.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_ingresoscom.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_kermesse.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_Precios.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_Productos.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_ProductosPrecios.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_rol_opciones.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_rol_usuario.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_tasacambio.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vw_tasacambiodet.cs">
+      <DependentUpon>KermesseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3660,6 +3702,7 @@
     <Content Include="Views\Tbl_Moneda\Tbl_Moneda.cshtml" />
     <Content Include="Views\Tbl_Tasacambio\Tbl_Tasacambio.cshtml" />
     <Content Include="Views\Tbl_Tasacambio\InsertTasaCambio.cshtml" />
+    <Content Include="Views\Tbl_Tasacambio\EditTasaCambioM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

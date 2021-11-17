@@ -12,13 +12,12 @@ namespace KERMESSE_MYGRO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_rol_usuario
+    public partial class vw_arqueocajadet
     {
-        public int id_rol_usuario { get; set; }
-        public int id_usuario { get; set; }
-        public int id_rol { get; set; }
-    
-        public virtual tbl_rol tbl_rol { get; set; }
-        public virtual tbl_usuario tbl_usuario { get; set; }
+        public int id_ArqueoCaja { get; set; }
+        public string nombre { get; set; }
+        public string valor { get; set; }
+        public decimal cantidad { get; set; }
+        public string subtotal { get; set; }
     }
 }

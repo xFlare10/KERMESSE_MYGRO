@@ -12,13 +12,13 @@ namespace KERMESSE_MYGRO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_rol_usuario
+    public partial class vw_gastos
     {
-        public int id_rol_usuario { get; set; }
-        public int id_usuario { get; set; }
-        public int id_rol { get; set; }
-    
-        public virtual tbl_rol tbl_rol { get; set; }
-        public virtual tbl_usuario tbl_usuario { get; set; }
+        public int id_gasto { get; set; }
+        public string Kermesse { get; set; }
+        public string Categoria_gasto { get; set; }
+        public System.DateTime fecha_gasto { get; set; }
+        public string concepto { get; set; }
+        public decimal monto { get; set; }
     }
 }
