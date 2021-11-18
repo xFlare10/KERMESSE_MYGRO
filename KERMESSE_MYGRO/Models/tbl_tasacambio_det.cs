@@ -11,15 +11,20 @@ namespace KERMESSE_MYGRO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_tasacambio_det
     {
         public int id_tasacambio_det { get; set; }
         public int id_tasacambio { get; set; }
+        
+        [Display(Name = "Fecha: ")]
+        [Required(ErrorMessage = "Especifique una fecha")]
         public System.DateTime fecha { get; set; }
+        [Display(Name = "Tipo de cambio: ")]
+        [Required(ErrorMessage = "Ingrese una cantidad")]
         public decimal tipo_cambio { get; set; }
         public int estado { get; set; }
-    
         public virtual tbl_tasacambio tbl_tasacambio { get; set; }
     }
 }

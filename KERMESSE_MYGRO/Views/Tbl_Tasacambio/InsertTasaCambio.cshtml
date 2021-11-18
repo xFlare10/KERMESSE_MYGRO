@@ -104,7 +104,7 @@
                                             <div class="input-group mb-3">
                                                 @*<input class="form-control" name="tasaC" id="tasaC" type="number" step='0.01'
         value='0.00' placeholder="0.00" title="Ingrese la tasa de cambio" required />*@
-                                                @Html.EditorFor(model => model.Item2.tipo_cambio, new { htmlAttributes = new { @class = "form-control", @type = "number", @id = "tasaC", @name = "tasaC", value="0.00" , @step="0.01" } })
+                                                @Html.EditorFor(model => model.Item2.tipo_cambio, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @id = "tasaC", @name = "tasaC", value="0.00" , @step="0.01" } })
                                                 @Html.ValidationMessageFor(model => model.Item2.tipo_cambio, "", new { @class = "text-danger" })
                                             </div>
                                         </div>

@@ -4,6 +4,7 @@
     ViewBag.Title = "Tbl_Tasacambio";
 }
 
+
 <div class="container-fluid">
     <h1 class="mt-4">Gestión de tasa de cambio</h1>
     <ol class="breadcrumb mb-4">
@@ -70,7 +71,7 @@
                                 <th>
                                     @Html.DisplayFor(modelItem => item.mes)
                                 </th>
-                                <th>    
+                                <th>
                                     @Html.DisplayFor(modelItem => item.anio)
                                 </th>
 
@@ -81,10 +82,27 @@
                                         @Url.Action("EditRol", new { id = item.id_rol } )
                                         @Url.Action("DeleteRol", new { id = item.id_rol } )
                                     *@
-                                    <a href=" @Url.Action("Edit", new { id = item.id_tasacambio } )"
+                                    <a href="@Url.Action("VerTasacambio", new { id = item.id_tasacambio })"
+                                       title="Ver período">
+                                        <button class="btn btn-sm btn-outline-primary rounded-circle">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </a>
+                                    &nbsp;&nbsp;
+
+                                    <a href=" @Url.Action("EditTasaCambioM", new { id = item.id_tasacambio } )"
                                        title="Modificar">
                                         <button class="btn btn-sm btn-outline-primary rounded-circle">
                                             <i class="fas fa-pencil-alt"></i>
+                                        </button>
+                                    </a>
+
+                                    &nbsp;&nbsp;
+
+                                    <a href="#"
+                                       title="Editar detalles">
+                                        <button class="btn btn-sm btn-outline-primary rounded-circle">
+                                            <i class="fas fa-edit"></i>
                                         </button>
                                     </a>
 
@@ -96,6 +114,7 @@
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </a>
+
                                 </td>
                             </tr>
                         }

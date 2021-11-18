@@ -17,10 +17,15 @@ namespace KERMESSE_MYGRO.Controllers
             return View(db.tbl_tasacambio.Where(model=>model.estado != 3));
         }
 
+        void Combobox()
+        {
+            ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+        }
+
         public ActionResult InsertTasaCambio()
         {
-            ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model=>model.estado != 3), "id_moneda", "nombre");
-            ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            Combobox();
             return View();
         }
 
@@ -29,7 +34,8 @@ namespace KERMESSE_MYGRO.Controllers
         {
             ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
             ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
-            
+            string result = "Error! Order Is Not Complete!";
+
             tbl_tasacambio tc = new tbl_tasacambio();
 
                 tc.id_monedaO = monedaO;
@@ -50,8 +56,10 @@ namespace KERMESSE_MYGRO.Controllers
                 }
                 db.SaveChanges();
 
-               
-            return RedirectToAction("Tbl_Tasacambio");
+            result = "Success! Order Is Complete!";
+            
+            //RedirectToAction("Tbl_Tasacambio");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteTasaCambio(int id)
@@ -85,22 +93,40 @@ namespace KERMESSE_MYGRO.Controllers
 
         public ActionResult EditTasaCambioM(int id)
         {
-            tbl_tasacambio tbc = db.tbl_tasacambio.Find(id);
+            ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            tbl_tasacambio tcc = db.tbl_tasacambio.Find(id);
 
-            if (tbc == null)
+            if (tcc == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(tbc);
+                return View(tcc);
             }
 
+        }
+
+        public ActionResult EditTasaCambioD (int id)
+        {
+            Combobox();
+            tbl_tasacambio_det tbd = db.tbl_tasacambio_det.Find(id);
+
+            if (tbd == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(tbd);
+            }
         }
 
         [HttpPost]
         public ActionResult UpdateTasaCambioM(tbl_tasacambio tbc)
         {
+            Combobox();
             try
             {
                 if (ModelState.IsValid)
@@ -117,9 +143,35 @@ namespace KERMESSE_MYGRO.Controllers
                 return View();
             }
         }
-    }
 
-}
+        [HttpPost]
+        public ActionResult UpdateTasaCambioD(tbl_tasacambio_det tbd)
+        {
+            Combobox();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    tbd.estado = 2;
+                    db.Entry(tbd).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+                return RedirectToAction("Tbl_Tasacambio");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult VerTasacambio(int id)
+        {
+            var tasa = db.vw_tasacambiodet.Where(x => x.id_tasaCambio == id);
+            return View(tasa);
+
+        }
+    }
 
 }
 

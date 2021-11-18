@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - MYGRO</title>
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/fontawesome-free-5.15.1/css/fontawesome.css" rel="stylesheet" />
@@ -172,10 +172,23 @@
             searching: true,
             dom: 'Bfrtip',
             buttons: [{
-                extend: 'pdf', text: '<i class="fas fa-file-pdf" style="margin-right:10px"></i>Descargar como PDF', titleAttr: 'PDF', className: 'btn btn2'
+                extend: 'pdf', text: '<i class="fas fa-file-pdf" style="margin-right:10px"></i>Descargar como PDF',
+                messageTop: "Reporte de datos",
+                exportOptions: {
+                    columns: ':not(:last-child)',
+                }, titleAttr: 'PDF', className: 'btn btn2'
             },
-            { extend: 'excel', text: '<i class="fas fa-file-excel" style="margin-right:10px"></i>Descargar como Excel', titleAttr: 'Excel', className: 'btn btn2' },
-            { extend: 'print', text: '<i class="fas fa-print" style="margin-right:10px"></i>Imprimir tabla', titleAttr: 'Imprimir', className: 'btn btn2' }
+                {
+                    extend: 'excel', text: '<i class="fas fa-file-excel" style="margin-right:10px"></i>Descargar como Excel',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }
+                    , titleAttr: 'Excel', className: 'btn btn2'
+                },
+                { extend: 'print', text: '<i class="fas fa-print" style="margin-right:10px"></i>Imprimir tabla',
+                    exportOptions: {
+                        columns: ':not(:last-child)',
+                    }, titleAttr: 'Imprimir', className: 'btn btn2' }
             ],
 
             initComplete: function () {

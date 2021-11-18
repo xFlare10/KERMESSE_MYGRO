@@ -4,66 +4,132 @@
     ViewBag.Title = "EditTasaCambioM";
 }
 
-<h2>EditTasaCambioM</h2>
+@{
+    string name = " ";
+    int[] n = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+    string[] m = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
+    var val = @Html.ValueFor(model => model.mes).ToString();
 
-@using (Html.BeginForm())
+}
+
+@foreach (int j in n)
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>tbl_tasacambio</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id_tasacambio)
+    if (j == Int32.Parse(val))
+    {
+        name = m[j-1];
+    }
+}
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_monedaO, "id_monedaO", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("id_monedaO", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.id_monedaO, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.id_monedaC, "id_monedaC", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("id_monedaC", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.id_monedaC, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.mes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.mes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.mes, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.anio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.anio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.anio, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="container-fluid">
+    <h1 class="mt-4">Gestión de Tasa de cambio</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+        <li class="breadcrumb-item "><a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")">Gestión de tasa de cambio</a></li>
+        <li class="breadcrumb-item active">Modificando Período</li>
+    </ol>
+    <div class="card mb-4">
+        <img src="https://miviajeanewyork.files.wordpress.com/2016/02/monedas-banner.jpg?w=1390" class="card-img-top" alt="moneda">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+        <div class="card-body">
+
+            <div class="table">
+
+                <h2>Modificando período</h2>
+
+                <div style="text-align: right;">
+                    <a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")" title="Regresar a la página anterior">
+                        <i class="fas fa-arrow-circle-left"></i>
+                        Regresar a la página anterior
+                    </a><br><br>
+                </div>
+
+                @using (Html.BeginForm("UpdateTasaCambioM", "Tbl_Tasacambio", FormMethod.Post))
+                {
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id_tasacambio)
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <label class="small mb-1">Moneda de Origen: </label>
+
+                                    @Html.DropDownListFor(model => model.id_monedaO, ViewBag.id_monedaO as SelectList, htmlAttributes: new { @class = "form-control", @name = "monedaO", @id = "monedaO" })
+                                    @Html.ValidationMessageFor(model => model.id_monedaO, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col">
+                                    <label class="small mb-1">Moneda de Cambio: </label>
+                                    @Html.DropDownListFor(model => model.id_monedaC, ViewBag.id_monedaC as SelectList, htmlAttributes: new { @class = "form-control", @name = "monedaC", @id = "monedaC" })
+                                    @Html.ValidationMessageFor(model => model.id_monedaC, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="small mb-1">Mes: </label>
+                                    <div class="col-md-10">
+                                    </div>
+                                    <select class="form-control" name="mes" id="mes" required>
+                                        <option selected value="@Html.DisplayFor(model => model.mes) ">@name</option>
+                                        <option value="1">Enero</option>
+                                        <option value="2">Febrero</option>
+                                        <option value="3">Marzo</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Mayo</option>
+                                        <option value="6">Junio</option>
+                                        <option value="7">Julio</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+
+
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.mes)
+                                </div>
+
+
+                                <div class="col">
+                                    <label class="small mb-1">Año: </label>
+                                    @*<input class="form-control" name="anio" id="anio"
+                                        type="number" placeholder="Año" title="Ingrese el año" step="1" required />*@
+                                    @Html.EditorFor(model => model.anio, new { htmlAttributes = new { @class = "form-control", @type = "number", @step = "1" } })
+                                    @Html.ValidationMessageFor(model => model.anio)
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="form-row" style="text-align: center;">
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-primary btn-block" type="submit"> Guardar cambios </button>
+                                        </div>
+
+                                        <div class="col">
+                                            <input class="btn btn-outline-danger btn-block" type="reset" value="Cancelar" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+

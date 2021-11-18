@@ -11,7 +11,8 @@ namespace KERMESSE_MYGRO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,15 +23,37 @@ namespace KERMESSE_MYGRO.Models
             this.tbl_kermesse2 = new HashSet<tbl_kermesse>();
             this.tbl_rol_usuario = new HashSet<tbl_rol_usuario>();
         }
-    
+
         public int id_usuario { get; set; }
+
+        [Display(Name = "Nombre de usuario: ")]
+        [Required(ErrorMessage = "Escriba su nombre de usuario")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
         public string usuario { get; set; }
+
+        [Display(Name = "Contraseña: ")]
+        [Required(ErrorMessage = "Ingrese su contraseña")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
+        [DataType(DataType.Password)]
         public string pwd { get; set; }
+
+        [Display(Name = "Nombres: ")]
+        [Required(ErrorMessage = "Escriba su nombre")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
         public string nombres { get; set; }
+
+        [Display(Name = "Apellidos: ")]
+        [Required(ErrorMessage = "Escriba sus apellidos")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
         public string apellidos { get; set; }
+
+        [Display(Name = "Correo electrónico: ")]
+        [Required(ErrorMessage = "Ingrese su correo electrónico")]
+        [StringLength(50, ErrorMessage = "La cantidad de caracteres permitida es de 50")]
         public string email { get; set; }
         public int estado { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_kermesse> tbl_kermesse { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
