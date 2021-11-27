@@ -61,7 +61,7 @@ namespace KERMESSE_MYGRO.Models
         public virtual DbSet<VW_ProductosPrecios> VW_ProductosPrecios { get; set; }
         public virtual DbSet<vw_rol_opciones> vw_rol_opciones { get; set; }
         public virtual DbSet<vw_rol_usuario> vw_rol_usuario { get; set; }
-        public virtual DbSet<vw_tasacambio> vw_tasacambio { get; set; }
         public virtual DbSet<vw_tasacambiodet> vw_tasacambiodet { get; set; }
+        public virtual DbSet<vw_tasacambio> vw_tasacambio { get; set; }
     }
 }

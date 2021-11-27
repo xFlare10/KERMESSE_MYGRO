@@ -3703,8 +3703,8 @@
     <Content Include="Views\Tbl_Tasacambio\Tbl_Tasacambio.cshtml" />
     <Content Include="Views\Tbl_Tasacambio\InsertTasaCambio.cshtml" />
     <Content Include="Views\Tbl_Tasacambio\EditTasaCambioM.cshtml" />
-    <Content Include="Views\Tbl_Tasacambio\EditTasaCambioD.cshtml" />
     <Content Include="Views\Tbl_Tasacambio\VerTasacambio.cshtml" />
+    <Content Include="Views\Tbl_Tasacambio\EditTasaCambioD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

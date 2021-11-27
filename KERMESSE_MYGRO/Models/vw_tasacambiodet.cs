@@ -16,6 +16,7 @@ namespace KERMESSE_MYGRO.Models
     {
         public int id_tasaCambio { get; set; }
         public string tasa { get; set; }
+        public int idDet { get; set; }
         public System.DateTime fecha { get; set; }
         public string tipoCambio { get; set; }
     }

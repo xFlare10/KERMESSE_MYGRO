@@ -14,10 +14,11 @@ namespace KERMESSE_MYGRO.Models
     
     public partial class vw_tasacambio
     {
-        public int id_tasaCambio { get; set; }
+        public int id_tasacambio { get; set; }
         public string original { get; set; }
         public string cambio { get; set; }
         public int mes { get; set; }
         public int anio { get; set; }
+        public int estado { get; set; }
     }
 }

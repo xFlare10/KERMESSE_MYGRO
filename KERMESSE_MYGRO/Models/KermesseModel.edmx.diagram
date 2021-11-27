@@ -69,8 +69,8 @@
         <EntityTypeShape EntityType="KERMESSEModel.VW_ProductosPrecios" Width="1.5" PointX="12.75" PointY="11.75" />
         <EntityTypeShape EntityType="KERMESSEModel.vw_rol_opciones" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="KERMESSEModel.vw_rol_usuario" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="KERMESSEModel.vw_tasacambio" Width="1.5" PointX="14.75" PointY="6.75" />
-        <EntityTypeShape EntityType="KERMESSEModel.vw_tasacambiodet" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="KERMESSEModel.vw_tasacambiodet" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KERMESSEModel.vw_tasacambio" Width="1.5" PointX="15.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

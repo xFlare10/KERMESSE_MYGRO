@@ -245,7 +245,7 @@
             data: data,
             success: function (result) {
                 alert(result);
-                location.reload();
+                location.href="/Tbl_Tasacambio/tbl_tasacambio";
             },
             error: function () {
                 alert("Error!")
@@ -269,7 +269,6 @@
                     tipo_cambio: $(this).find('td:eq(1)').html(),
                 });
             }
-
         });
 
         console.log(detail);

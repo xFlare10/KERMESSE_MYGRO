@@ -57,8 +57,6 @@ namespace KERMESSE_MYGRO.Controllers
                 db.SaveChanges();
 
             result = "Success! Order Is Complete!";
-            
-            //RedirectToAction("Tbl_Tasacambio");
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -69,6 +67,20 @@ namespace KERMESSE_MYGRO.Controllers
             this.DeleteLogTasaCambio(tc);
 
             return RedirectToAction("Tbl_Tasacambio");
+        }
+
+        public ActionResult DeleteDet(int id)
+        {
+            //Esto borra de forma directa
+            //Si se quiere borrar de manera logica hay que ajustar el parametro de la vista para que no muestre los estados 3
+            // y claramente cambiar el codigo de abajo con el de DeleteTasaCambio
+            tbl_tasacambio_det tde = new tbl_tasacambio_det();
+            tde = db.tbl_tasacambio_det.Find(id);
+            db.tbl_tasacambio_det.Remove(tde);
+
+            db.SaveChanges();
+            var list = db.vw_tasacambiodet.ToList();
+            return RedirectToAction("VerTasaCambio/"+id);
         }
 
         public ActionResult DeleteLogTasaCambio(tbl_tasacambio ttc)
@@ -93,8 +105,7 @@ namespace KERMESSE_MYGRO.Controllers
 
         public ActionResult EditTasaCambioM(int id)
         {
-            ViewBag.id_monedaO = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
-            ViewBag.id_monedaC = new SelectList(db.tbl_moneda.Where(model => model.estado != 3), "id_moneda", "nombre");
+            Combobox();
             tbl_tasacambio tcc = db.tbl_tasacambio.Find(id);
 
             if (tcc == null)
@@ -145,24 +156,44 @@ namespace KERMESSE_MYGRO.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateTasaCambioD(tbl_tasacambio_det tbd)
+        public ActionResult UpdateDet(tbl_tasacambio_det tde)
         {
             Combobox();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    tbd.estado = 2;
-                    db.Entry(tbd).State = EntityState.Modified;
+                    tde.estado = 2;
+                    db.Entry(tde).State = EntityState.Modified;
                     db.SaveChanges();
-
                 }
-                return RedirectToAction("Tbl_Tasacambio");
+
+                return RedirectToAction("VerTasaCambio/"+tde.id_tasacambio);
             }
             catch
             {
-                return View();
+                return null;
             }
+        }
+
+        public ActionResult InsertDet(tbl_tasacambio_det det, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                tbl_tasacambio_det tde = new tbl_tasacambio_det();
+                tde.id_tasacambio = id;
+                tde.fecha = det.fecha;
+                tde.tipo_cambio = det.tipo_cambio;
+                tde.estado = 1;
+
+                db.tbl_tasacambio_det.Add(tde);
+                db.SaveChanges();
+            }
+
+            ModelState.Clear();
+
+
+            return View("VerTasaCambio/"+id);
         }
 
         public ActionResult VerTasacambio(int id)
