@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRpt" targetNamespace="http://tempuri.org/dsRpt.xsd" xmlns:mstns="http://tempuri.org/dsRpt.xsd" xmlns="http://tempuri.org/dsRpt.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="KERMESSEConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KERMESSEConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.KERMESSEConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_ingresoscomTableAdapter" GeneratorDataComponentClassName="vw_ingresoscomTableAdapter" Name="vw_ingresoscom" UserDataComponentName="vw_ingresoscomTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="KERMESSEConnectionString (Web.config)" DbObjectName="KERMESSE.dbo.vw_ingresoscom" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id_ingreso_comunidad, Kermesse, Comunidad, Responsable_com, Producto, Cantidad_disponible, Cantidad_vendida, Total_Bonos FROM dbo.vw_ingresoscom</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id_ingreso_comunidad" DataSetColumn="id_ingreso_comunidad" />
+              <Mapping SourceColumn="Kermesse" DataSetColumn="Kermesse" />
+              <Mapping SourceColumn="Comunidad" DataSetColumn="Comunidad" />
+              <Mapping SourceColumn="Responsable_com" DataSetColumn="Responsable_com" />
+              <Mapping SourceColumn="Producto" DataSetColumn="Producto" />
+              <Mapping SourceColumn="Cantidad_disponible" DataSetColumn="Cantidad_disponible" />
+              <Mapping SourceColumn="Cantidad_vendida" DataSetColumn="Cantidad_vendida" />
+              <Mapping SourceColumn="Total_Bonos" DataSetColumn="Total_Bonos" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRpt" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRpt" msprop:Generator_UserDSName="dsRpt">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vw_ingresoscom" msprop:Generator_TableClassName="vw_ingresoscomDataTable" msprop:Generator_TableVarName="tablevw_ingresoscom" msprop:Generator_TablePropName="vw_ingresoscom" msprop:Generator_RowDeletingName="vw_ingresoscomRowDeleting" msprop:Generator_RowChangingName="vw_ingresoscomRowChanging" msprop:Generator_RowEvHandlerName="vw_ingresoscomRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_ingresoscomRowDeleted" msprop:Generator_UserTableName="vw_ingresoscom" msprop:Generator_RowChangedName="vw_ingresoscomRowChanged" msprop:Generator_RowEvArgName="vw_ingresoscomRowChangeEvent" msprop:Generator_RowClassName="vw_ingresoscomRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_ingreso_comunidad" msprop:Generator_ColumnVarNameInTable="columnid_ingreso_comunidad" msprop:Generator_ColumnPropNameInRow="id_ingreso_comunidad" msprop:Generator_ColumnPropNameInTable="id_ingreso_comunidadColumn" msprop:Generator_UserColumnName="id_ingreso_comunidad" type="xs:int" />
+              <xs:element name="Kermesse" msprop:Generator_ColumnVarNameInTable="columnKermesse" msprop:Generator_ColumnPropNameInRow="Kermesse" msprop:Generator_ColumnPropNameInTable="KermesseColumn" msprop:Generator_UserColumnName="Kermesse">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Comunidad" msprop:Generator_ColumnVarNameInTable="columnComunidad" msprop:Generator_ColumnPropNameInRow="Comunidad" msprop:Generator_ColumnPropNameInTable="ComunidadColumn" msprop:Generator_UserColumnName="Comunidad">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Responsable_com" msprop:Generator_ColumnVarNameInTable="columnResponsable_com" msprop:Generator_ColumnPropNameInRow="Responsable_com" msprop:Generator_ColumnPropNameInTable="Responsable_comColumn" msprop:Generator_UserColumnName="Responsable_com">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Producto" msprop:Generator_ColumnVarNameInTable="columnProducto" msprop:Generator_ColumnPropNameInRow="Producto" msprop:Generator_ColumnPropNameInTable="ProductoColumn" msprop:Generator_UserColumnName="Producto">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cantidad_disponible" msprop:Generator_ColumnVarNameInTable="columnCantidad_disponible" msprop:Generator_ColumnPropNameInRow="Cantidad_disponible" msprop:Generator_ColumnPropNameInTable="Cantidad_disponibleColumn" msprop:Generator_UserColumnName="Cantidad_disponible" type="xs:int" />
+              <xs:element name="Cantidad_vendida" msprop:Generator_ColumnVarNameInTable="columnCantidad_vendida" msprop:Generator_ColumnPropNameInRow="Cantidad_vendida" msprop:Generator_ColumnPropNameInTable="Cantidad_vendidaColumn" msprop:Generator_UserColumnName="Cantidad_vendida" type="xs:int" />
+              <xs:element name="Total_Bonos" msprop:Generator_ColumnVarNameInTable="columnTotal_Bonos" msprop:Generator_ColumnPropNameInRow="Total_Bonos" msprop:Generator_ColumnPropNameInTable="Total_BonosColumn" msprop:Generator_UserColumnName="Total_Bonos" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vw_ingresoscom" />
+      <xs:field xpath="mstns:id_ingreso_comunidad" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

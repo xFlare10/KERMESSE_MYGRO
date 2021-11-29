@@ -8,7 +8,8 @@
     <h1 class="mt-4">Gestión de tasa de cambio</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestión de tasa de cambio</li>
+        <li class="breadcrumb-item "><a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")">Gestión de tasa de cambio</a></li>
+        <li class="breadcrumb-item active">Detalles</li>
     </ol>
     <div class="card mb-4">
         <img src="https://miviajeanewyork.files.wordpress.com/2016/02/monedas-banner.jpg?w=1390" class="card-img-top" alt="tasa-de-cambio">
@@ -97,6 +98,23 @@
     </div>
 </div>
 
-<div class="col">
-    <input class="btn btn-outline-danger btn-block" type="button" onclick="javascript:window.history.back(-1);return false;" value="Regresar" />
+<div class="form-row" style="text-align: center;">
+
+    <div class="row">
+        
+        <a href="@Url.Action("Tbl_Tasacambio","tbl_tasacambio")">
+            <button type="button" class="btn btn-outline-danger btn-block">
+                <i class="fas fa-long-arrow-alt-left"></i> &nbsp;Regresar
+            </button>
+        </a>
+
+        @*<div class="col">
+            <button class="btn btn-primary btn-block" type="submit"> Guardar cambios </button>
+        </div>
+
+        <div class="col">
+            <input class="btn btn-outline-danger btn-block" type="reset" value="Cancelar" />
+        </div>*@
+    </div>
+
 </div>

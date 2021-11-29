@@ -460,9 +460,11 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_rol_opciones' does not have a prim
           <Key>
             <PropertyRef Name="rol" />
             <PropertyRef Name="opcion" />
+            <PropertyRef Name="id_rol" />
           </Key>
           <Property Name="rol" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="opcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_rol" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KERMESSE.dbo.vw_rol_usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -974,7 +976,8 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
           <EntitySet Name="vw_rol_opciones" EntityType="Self.vw_rol_opciones" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_rol_opciones].[rol] AS [rol], 
-    [vw_rol_opciones].[opcion] AS [opcion]
+    [vw_rol_opciones].[opcion] AS [opcion], 
+    [vw_rol_opciones].[id_rol] AS [id_rol]
     FROM [dbo].[vw_rol_opciones] AS [vw_rol_opciones]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vw_rol_usuario" EntityType="Self.vw_rol_usuario" store:Type="Views" store:Schema="dbo">
@@ -1928,10 +1931,10 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
           <EntitySet Name="VW_Precios" EntityType="KERMESSEModel.VW_Precios" />
           <EntitySet Name="VW_Productos" EntityType="KERMESSEModel.VW_Productos" />
           <EntitySet Name="VW_ProductosPrecios" EntityType="KERMESSEModel.VW_ProductosPrecios" />
-          <EntitySet Name="vw_rol_opciones" EntityType="KERMESSEModel.vw_rol_opciones" />
           <EntitySet Name="vw_rol_usuario" EntityType="KERMESSEModel.vw_rol_usuario" />
           <EntitySet Name="vw_tasacambiodet" EntityType="KERMESSEModel.vw_tasacambiodet" />
           <EntitySet Name="vw_tasacambio" EntityType="KERMESSEModel.vw_tasacambio" />
+          <EntitySet Name="vw_rol_opciones" EntityType="KERMESSEModel.vw_rol_opciones" />
         </EntityContainer>
         <EntityType Name="vw_arqueocaja">
           <Key>
@@ -2094,14 +2097,6 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
           <Property Name="ListaPrecio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PrecioVenta" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="vw_rol_opciones">
-          <Key>
-            <PropertyRef Name="rol" />
-            <PropertyRef Name="opcion" />
-          </Key>
-          <Property Name="rol" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="opcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="vw_rol_usuario">
           <Key>
             <PropertyRef Name="usuario" />
@@ -2140,6 +2135,16 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
           <Property Name="mes" Type="Int32" Nullable="false" />
           <Property Name="anio" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_rol_opciones">
+          <Key>
+            <PropertyRef Name="rol" />
+            <PropertyRef Name="opcion" />
+            <PropertyRef Name="id_rol" />
+          </Key>
+          <Property Name="rol" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="opcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_rol" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2560,14 +2565,6 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_rol_opciones">
-            <EntityTypeMapping TypeName="KERMESSEModel.vw_rol_opciones">
-              <MappingFragment StoreEntitySet="vw_rol_opciones">
-                <ScalarProperty Name="opcion" ColumnName="opcion" />
-                <ScalarProperty Name="rol" ColumnName="rol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vw_rol_usuario">
             <EntityTypeMapping TypeName="KERMESSEModel.vw_rol_usuario">
               <MappingFragment StoreEntitySet="vw_rol_usuario">
@@ -2598,6 +2595,15 @@ warning 6002: The table/view 'KERMESSE.dbo.vw_tasacambiodet' does not have a pri
                 <ScalarProperty Name="cambio" ColumnName="cambio" />
                 <ScalarProperty Name="original" ColumnName="original" />
                 <ScalarProperty Name="id_tasacambio" ColumnName="id_tasacambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rol_opciones">
+            <EntityTypeMapping TypeName="KERMESSEModel.vw_rol_opciones">
+              <MappingFragment StoreEntitySet="vw_rol_opciones">
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="opcion" ColumnName="opcion" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

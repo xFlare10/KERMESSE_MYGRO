@@ -61,13 +61,13 @@
                                 <div class="col">
                                     <label class="small mb-1">Moneda de Origen: </label>
 
-                                    @Html.DropDownList("id_monedaO", null, htmlAttributes: new { @class = "form-control", @name = "monedaO", @id = "monedaO" })
+                                    @Html.DropDownListFor(model => model.id_monedaO, ViewBag.id_monedaO as SelectList, "Test" ,htmlAttributes: new { @class = "form-control", @name = "monedaO", @id = "monedaO" })
                                     @Html.ValidationMessageFor(model => model.id_monedaO, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="col">
                                     <label class="small mb-1">Moneda de Cambio: </label>
-                                    @Html.DropDownList("id_monedaC", null , htmlAttributes: new { @class = "form-control", @name = "monedaC", @id = "monedaC" })
+                                    @Html.DropDownListFor(model => model.id_monedaC, ViewBag.id_monedaC as SelectList, htmlAttributes: new { @class = "form-control", @name = "monedaC", @id = "monedaC" })
                                     @Html.ValidationMessageFor(model => model.id_monedaC, "", new { @class = "text-danger" })
                                 </div>
 

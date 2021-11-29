@@ -16,5 +16,6 @@ namespace KERMESSE_MYGRO.Models
     {
         public string rol { get; set; }
         public string opcion { get; set; }
+        public int id_rol { get; set; }
     }
 }
