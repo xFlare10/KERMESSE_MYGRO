@@ -176,12 +176,18 @@ namespace KERMESSE_MYGRO.Controllers
             }
         }
 
-        public ActionResult InsertDet(tbl_tasacambio_det det, int id)
+        public ActionResult InsertDet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertDet(tbl_tasacambio_det det)
         {
             if (ModelState.IsValid)
             {
                 tbl_tasacambio_det tde = new tbl_tasacambio_det();
-                tde.id_tasacambio = id;
+                //tde.id_tasacambio = id;
                 tde.fecha = det.fecha;
                 tde.tipo_cambio = det.tipo_cambio;
                 tde.estado = 1;
@@ -193,7 +199,7 @@ namespace KERMESSE_MYGRO.Controllers
             ModelState.Clear();
 
 
-            return View("VerTasaCambio/"+id);
+            return View("VerTasaCambio/");
         }
 
         public ActionResult VerTasacambio(int id)

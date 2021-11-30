@@ -1,4 +1,14 @@
-﻿
+﻿@using KERMESSE_MYGRO.Models;
+
+@{
+    /*Instanciamos objetos y variables */
+    KERMESSEEntities db = new KERMESSEEntities();
+    tbl_usuario tu = new tbl_usuario();
+    /* Obtenemos la sesion */
+    tu = Session["usuario"] as tbl_usuario;
+}
+
+
 @{
     char[] charsToTrim = { 'T', 'b', 'l', '_' };
 
@@ -38,7 +48,7 @@
             </a>
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle link-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                    <i class="bi-person-circle h2"></i> Usuario
+                    <i class="bi-person-circle h2"></i> @tu.usuario
                 </a>
                 <ul class="dropdown-menu text-small shadow dropdown" aria-labelledby="dropdown">
                     <li><a class="dropdown-item" href="@Url.Action("Logout", "Tbl_Usuario")">Desconectarse...</a></li>
@@ -92,6 +102,11 @@
                         <li>
                             <a href="@Url.Action("tbl_tasacambio", "Tbl_Tasacambio")" class="nav-link py-3 px-2 link-light" title="Tasa de cambio" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                                 <i class="fas fa-file-invoice-dollar fs-3"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Reportes", "Home")" class="nav-link py-3 px-2 link-light" title="Reportes" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                                <i class="fas fa-file-alt fs-3"></i>
                             </a>
                         </li>
                     </ul>
@@ -215,6 +230,46 @@
 
             });
             eliminarFila();
+
+            $("#btnShowModalIngresos").click(function () {
+                $("#ModalIngresos").modal('show');
+            });
+
+            $("#btnShowModalEgresos").click(function () {
+                $("#ModalEgresos").modal('show');
+            });
+
+            $("#btnShowModalListaPrecio").click(function () {
+                $("#ModalListaPrecio").modal('show');
+            });
+
+            $("#btnShowModalArqueo").click(function () {
+                $("#ModalArqueo").modal('show');
+            });
+
+            $("#btnShowModalResumen").click(function () {
+                $("#ModalResumen").modal('show');
+            });
+
+            $("#close").click(function () {
+                $("#ModalIngresos").modal('hide');
+            });
+
+            $("#closeEgresos").click(function () {
+                $("#ModalEgresos").modal('hide');
+            });
+
+            $("#closeLista").click(function () {
+                $("#ModalListaPrecio").modal('hide');
+            });
+
+            $("#closeArqueo").click(function () {
+                $("#ModalArqueo").modal('hide');
+            });
+
+            $("#closeResumen").click(function () {
+                $("#ModalResumen").modal('hide');
+            });
         });
 
 </script>

@@ -27,6 +27,11 @@ namespace KERMESSE_MYGRO.Controllers
             return View();
         }
 
+        public ActionResult Reportes()
+        {
+            return View();
+        }
+
         public ActionResult Error()
         {
             return View();
