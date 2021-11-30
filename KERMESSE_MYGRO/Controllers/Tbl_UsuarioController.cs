@@ -135,7 +135,7 @@ namespace KERMESSE_MYGRO.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "¡Los datos de accesos son incorrectos, por favor intente nuevamente.";
+                    ViewBag.error = "Los datos de accesos son incorrectos, por favor intente nuevamente.";
                     return View("ViewLogin");
                 }
             }

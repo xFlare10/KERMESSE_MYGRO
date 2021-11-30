@@ -10,11 +10,8 @@
 
 
 @{
-    char[] charsToTrim = { 'T', 'b', 'l', '_' };
 
     var nom = @ViewBag.title;
-    //var rem = nom.Substring(4, nom.Length - 4);
-    //string rem = nom.Trim(charsToTrim);
     string rem = nom.Replace("Tbl_", " ");
     Console.WriteLine(rem);
 }
